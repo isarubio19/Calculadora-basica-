@@ -1,0 +1,48 @@
+#include <stdio.h> // Biblioteca para entrada e saída (printf, scanf)
+
+int main() {
+    double a, b, resultado; // 'a' e 'b' são os operandos, 'resultado' guarda o cálculo
+    char op;                // variável para armazenar o operador (+, -, *, /)
+
+    // Exibe título
+    printf("=== CALCULADORA ===\n");
+
+    // Solicita uma expressão no formato: número operador número
+    printf("Digite a expressao (ex: 5 + 3): ");
+    scanf("%lf %c %lf", &a, &op, &b);
+
+    // Estrutura de decisão para verificar qual operação será realizada
+    switch (op) {
+
+        case '+': 
+            resultado = a + b; 
+            break;
+
+        case '-': 
+            resultado = a - b; 
+            break;
+
+        case '*': 
+            resultado = a * b; 
+            break;
+
+        case '/':
+            // Verifica divisão por zero (erro matemático)
+            if (b == 0) {
+                printf("Erro: divisao por zero!\n");
+                return 1; // encerra o programa com erro
+            }
+            resultado = a / b;
+            break;
+
+        default:
+            // Caso o operador não seja válido
+            printf("Operador invalido!\n");
+            return 1;
+    }
+
+    // Exibe o resultado (%g remove zeros desnecessários)
+    printf("Resultado: %g\n", resultado);
+
+    return 0; // indica que o programa terminou corretamente
+}
